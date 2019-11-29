@@ -1,0 +1,63 @@
+<#include "/header.html"/>
+<link rel="stylesheet" href="../styles/index.css">
+<link rel="stylesheet" href="../styles/detail.css">
+
+<div class="zg-wrap zu-main clearfix " role="main">
+    <div class="zu-main-content">
+        <div class="zu-main-content-inner">
+            <div class="zg-section" id="zh-home-list-title">
+                <i class="zg-icon zg-icon-feedlist"></i><a href="/pullfeeds" class="zg-link-normal">用户活跃度排名(WeightedLeaderRank)</a>
+                <span class="zg-right zm-noti-cleaner-setting" style="list-style:none">
+                        <a href="/" class="zg-link-gray-normal">
+                            <i class="zg-icon zg-icon-settings"></i>设置
+                        </a>
+                    </span>
+            </div>
+            <div class="zu-main-feed-con navigable" data-feedtype="topstory" id="zh-question-list">
+                <div id="js-home-feed-list" class="zh-general-list topstory clearfix">
+                    <#list vos as vo>
+                    <div class="feed-item folding feed-item-hook feed-item-1">
+                        <div class="feed-item-inner">
+                            <div class="avatar">
+                                <a title="${vo.userid}" class="zm-item-link-avatar" target="_blank" href="/user/${vo.userid}"${vo.username}>
+                                    <img src="${vo.headurl}" class="zm-item-img-avatar">
+                                </a>
+                            </div>
+                            <div class="feed-main">
+                                <div class="feed-source" data-za-module="FeedSource">  第${vo.paiming}名</div>
+                                <div class="feed-content" data-za-module="PostItem">
+                                    <div class="entry-body post-body js-collapse-body">
+                                        <div class="post-content">
+                                            <div class="zh-summary summary clearfix">
+                                                ${vo.username}
+                                                <a href="/user/${vo.userid!''}" class="toggle-expand">显示全部</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="feed-meta">
+                                        <div class="zm-item-meta answer-actions clearfix js-contentActions">
+                                            <div class="zm-meta-panel">
+                                                <a href="/user/${vo.userid!''}" name="addcomment" class="meta-item toggle-comment js-toggleCommentBox">
+                                                    <i class="z-icon-comment"></i>得分  ${vo.userscore}
+                                                </a>
+                                                <button class="meta-item item-collapse js-collapse">
+                                                    <i class="z-icon-fold"></i>收起
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </#list>
+            </div>
+            <a href="javascript:;" id="zh-load-more" class="zg-btn-white zg-r3px zu-button-more">更多</a>
+        </div>
+    </div>
+</div>
+</div>
+
+<#include "/js.html"/>
+<script type="text/javascript" src="/scripts/main/site/detail.js"></script>
+<#include "/footer.html"/>
